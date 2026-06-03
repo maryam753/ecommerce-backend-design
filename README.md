@@ -26,7 +26,7 @@ This project provides a smooth shopping experience with authentication, product 
 - MySQL Database
 - JavaScript (AJAX)
 - HTML, CSS, Bootstrap
-- Vite / Tailwind CSS (if used)
+
 
 ---
 
