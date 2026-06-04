@@ -12,7 +12,7 @@ class HomeController extends Controller
     $categories = Category::all();
      $products = Product::all(); 
      $deals = Product::where('is_deal', 1)->get();
-      $homeDecor = Product::whereHas('category', function ($q) { $q->where('name', 'home &decor'); })->get(); 
+$homeDecor = Product::whereHas('category', function ($q) { $q->where('name', 'Home and Decor'); })->get();
       $computer = Product::whereHas('category', function ($q) { $q->where('name', 'computer and tech'); })->get();
     $recommended = Product::latest()->take(10)->get();
 
