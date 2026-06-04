@@ -3,7 +3,7 @@
 @section('title', 'My Cart - Brand')
 
 @push('styles')
-    <link rel="stylesheet" href="{{ asset('css/cart.css') }}" />
+    <link rel="stylesheet" href="{{ secure_asset('css/cart.css') }}" />
 @endpush
 
 @section('content')
@@ -17,7 +17,7 @@
             @forelse($cartItems as $item)
             <div class="cart-item">
                 <div class="item-img">
-                    <img src="{{ asset('storage/' . $item->product->image) }}"
+                    <img src="{{ secure_asset('storage/' . $item->product->image) }}"
                          alt="{{ $item->product->name }}">
                 </div>
 

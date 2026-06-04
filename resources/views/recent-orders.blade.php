@@ -1,7 +1,7 @@
 @extends('app')
 @section('title', 'My Orders')
 @push('styles')
-<link rel="stylesheet" href="{{ asset('css/orders.css') }}">
+<link rel="stylesheet" href="{{ secure_asset('css/orders.css') }}">
 @endpush
 @section('content')
 

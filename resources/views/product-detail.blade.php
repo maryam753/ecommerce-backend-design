@@ -3,7 +3,7 @@
 @section('title', $product->name)
 
 @push('styles')
-<link rel="stylesheet" href="{{ asset('css/productdetail.css') }}">
+<link rel="stylesheet" href="{{ secure_asset('css/productdetail.css') }}">
 @endpush
 
 @section('content')
@@ -14,14 +14,14 @@
 
         <div class="gallery">
             <div class="gallery-main">
-                <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}" id="mainImgEl">
+                <img src="{{ secure_asset('storage/' . $product->image) }}" alt="{{ $product->name }}" id="mainImgEl">
             </div>
 
             @if($product->images && $product->images->count())
             <div class="gallery-thumbs">
                 @foreach($product->images as $img)
-                <div class="thumb" onclick="setThumb(this, '{{ asset('storage/' . $img->path) }}')">
-                    <img src="{{ asset('storage/' . $img->path) }}" alt="{{ $product->name }}">
+                <div class="thumb" onclick="setThumb(this, '{{ secure_asset('storage/' . $img->path) }}')">
+                    <img src="{{ secure_asset('storage/' . $img->path) }}" alt="{{ $product->name }}">
                 </div>
                 @endforeach
             </div>
@@ -232,7 +232,7 @@
             @foreach($youMayLike as $item)
             <a href="{{ route('product.detail', $item->id) }}" class="side-product">
                 <div class="side-img">
-                    <img src="{{ asset('storage/' . $item->image) }}" alt="{{ $item->name }}">
+                    <img src="{{ secure_asset('storage/' . $item->image) }}" alt="{{ $item->name }}">
                 </div>
                 <div class="side-info">
                     <div class="side-name">{{ $item->name }}</div>
@@ -253,7 +253,7 @@
             @foreach($relatedProducts as $rp)
             <a href="{{ route('product.detail', $rp->id) }}" class="product-thumb-card">
                 <div class="product-thumb-img">
-                    <img src="{{ asset('storage/' . $rp->image) }}" alt="{{ $rp->name }}">
+                    <img src="{{ secure_asset('storage/' . $rp->image) }}" alt="{{ $rp->name }}">
                 </div>
                 <div class="product-thumb-info">
                     <div class="product-thumb-name">{{ $rp->name }}</div>
@@ -280,5 +280,5 @@
 @endsection
 
 @push('scripts')
-<script src="{{ asset('js/productdetail.js') }}"></script>
+<script src="{{ secure_asset('js/productdetail.js') }}"></script>
 @endpush

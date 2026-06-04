@@ -1,7 +1,7 @@
 @extends('app')
 @section('title', 'Product Listing')
 @push('styles')
-<link rel="stylesheet" href="{{ asset('css/product-listing.css') }}">
+<link rel="stylesheet" href="{{ secure_asset('css/product-listing.css') }}">
 @endpush
 @section('content')
 
@@ -138,7 +138,7 @@
         </button>
 
         <div class="card-image">
-            <img src="{{ asset('storage/'.$product->image) }}" alt="{{ $product->name }}">
+            <img src="{{ secure_asset('storage/'.$product->image) }}" alt="{{ $product->name }}">
         </div>
 
         <div class="card-body">
@@ -173,7 +173,7 @@
     <div class="product-card list-card">
 
         <div class="card-image">
-            <img src="{{ asset('storage/'.$product->image) }}" alt="{{ $product->name }}">
+            <img src="{{ secure_asset('storage/'.$product->image) }}" alt="{{ $product->name }}">
         </div>
 
         <div class="card-body">
@@ -194,5 +194,5 @@
 </div>
 @endsection
 @push('scripts')
-<script src="{{ asset('js/productlisting.js') }}"></script>
+<script src="{{ secure_asset('js/productlisting.js') }}"></script>
 @endpush

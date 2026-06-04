@@ -2,7 +2,7 @@
 @section('title', 'Brand  B2B Marketplace')
 
 @push('styles')
-   <link rel="stylesheet" href="{{ asset('css/home.css') }}" />
+<link rel="stylesheet" href="{{ secure_secure_asset('css/home.css') }}" />
 @endpush
 
 @section('content')
@@ -33,7 +33,7 @@
           </a>
         </div>
         <div class="hero-img"
-             style="--hero-bg: url('{{ asset('Image/backgrounds/Banner-board-800x420 2.png') }}');">
+             style="--hero-bg: url('{{ secure_asset('Image/backgrounds/Banner-board-800x420 2.png') }}');">
         </div>
         <div class="hero-dots" style="z-index:2;">
           <span class="active"></span>
@@ -71,14 +71,14 @@
         <div class="promo-card">
           <h4>
             <span class="promo-icon"
-                  style="--icon-bg: url('{{ asset('Image/backgrounds/Group 969.png') }}');"></span>
+                  style="--icon-bg: url('{{ secure_asset('Image/backgrounds/Group 969.png') }}');"></span>
             Get US $10 off
           </h4>
           <p>with a new supplier</p>
         </div>
         <div class="supplier-card">
           <span class="supplier-icon"
-                style="--icon-bg: url('{{ asset('Image/backgrounds/Group 982.png') }}');"></span>
+                style="--icon-bg: url('{{ secure_asset('Image/backgrounds/Group 982.png') }}');"></span>
           <p>Shopping with best Discount Prices</p>
           <a href="#deals" class="btn btn-sm"
              style="background:rgba(255,255,255,.2);color:#fff;width:100%;">Shop now</a>
@@ -122,7 +122,7 @@
      <a href="{{ route('product.detail', $product->id) }}" class="deal-card-link">
     <div class="deal-card">
   <div class="img-wrap">
-    <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}">
+    <img src="{{ secure_asset('storage/' . $product->image) }}" alt="{{ $product->name }}">
   </div>
   <div class="name">{{ $product->name }}</div>
 
@@ -155,7 +155,7 @@
 <div class="cat-section">
   <div class="cat-section-label">
     <div class="cat-label-img"
-         style="--cat-img: url('{{ asset('Image/backgrounds/image 98.png') }}');"></div>
+         style="--cat-img: url('{{ secure_asset('Image/backgrounds/image 98.png') }}');"></div>
     <h3>Home and decor</h3>
     <a href="{{url('/product')}}" class="btn btn-outline btn-sm mt-8">Source now</a>
   </div>
@@ -164,7 +164,7 @@
    <a href="{{ route('product.detail', $p->id) }}">
     <div class="cat-product">
             <div class="img-wrap">
-        <img src="{{ asset('storage/' . $p->image) }}" alt="{{ $p->name }}"
+        <img src="{{ secure_asset('storage/' . $p->image) }}" alt="{{ $p->name }}"
              onerror="this.src='https://via.placeholder.com/60x50/F0F4FF/2563EB?text=🏠'" />
       </div>
       <div class="name">{{ $p->name }}</div>
@@ -181,7 +181,7 @@
 <div class="cat-section">
   <div class="cat-section-label">
     <div class="cat-label-img"
-         style="--cat-img: url('{{ asset('Image/backgrounds/image 106.png') }}');"></div>
+         style="--cat-img: url('{{ secure_asset('Image/backgrounds/image 106.png') }}');"></div>
     <h3> Computer and Tech</h3>
     <a href="{{url('/product')}}" class="btn btn-outline btn-sm mt-8">Source now</a>
   </div>
@@ -190,7 +190,7 @@
 <a href="{{ route('product.detail', $p->id) }}">
     <div class="cat-product">
             <div class="img-wrap">
-        <img src="{{ asset('storage/' . $p->image) }}" alt="{{ $p->name }}"
+        <img src="{{ secure_asset('storage/' . $p->image) }}" alt="{{ $p->name }}"
              onerror="this.src='https://via.placeholder.com/60x50/F0F9FF/0284C7?text=📱'" />
       </div>
       <div class="name">{{ $p->name }}</div>
@@ -211,7 +211,7 @@
        style="text-decoration:none;color:inherit;">
         <div class="item-card">
             <div class="img-wrap">
-                <img src="{{ asset('storage/' . $product->image) }}"
+                <img src="{{ secure_asset('storage/' . $product->image) }}"
                      alt="{{ $product->name }}">
             </div>
             @if($product->discount_price > 0)
@@ -289,6 +289,6 @@
 @endsection
 
 @push('scripts')
-<script src="{{ asset('js/home.js') }}"></script>
+<script src="{{ secure_secure_asset('js/home.js') }}"></script>
 
 @endpush
