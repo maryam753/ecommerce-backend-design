@@ -28,15 +28,9 @@ class ProductController extends Controller
 
     $imagePath = null;
 
-  if ($request->hasFile('image')) {
+if ($request->hasFile('image')) {
     try {
-       $cloudinary = new Cloudinary([
-    'cloud' => [
-        'cloud_name' => env('CLOUDINARY_CLOUD_NAME'),
-        'api_key'    => env('CLOUDINARY_API_KEY'),
-        'api_secret' => env('CLOUDINARY_API_SECRET'),
-    ]
-]);
+        $cloudinary = app(Cloudinary::class);
         
         $result = $cloudinary->uploadApi()->upload(
             $request->file('image')->getRealPath()
@@ -118,23 +112,16 @@ class ProductController extends Controller
         ];
 if ($request->hasFile('image')) {
     try {
-        $cloudinary = new Cloudinary([
-    'cloud' => [
-        'cloud_name' => env('CLOUDINARY_CLOUD_NAME'),
-        'api_key'    => env('CLOUDINARY_API_KEY'),
-        'api_secret' => env('CLOUDINARY_API_SECRET'),
-    ]
-]);
+        $cloudinary = app(Cloudinary::class);
         
         $result = $cloudinary->uploadApi()->upload(
             $request->file('image')->getRealPath()
         );
-        $data['image'] = $result['secure_url'];
+        $imagePath = $result['secure_url'];
     } catch (\Exception $e) {
         return response()->json(['message' => $e->getMessage()], 500);
     }
 }
-
         $product->update($data);
         $product->load('category');
 
