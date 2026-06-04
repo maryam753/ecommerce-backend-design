@@ -30,13 +30,13 @@ class ProductController extends Controller
 
   if ($request->hasFile('image')) {
     try {
-        $cloudinary = new Cloudinary([
-            'cloud' => [
-                'cloud_name' => env('CLOUDINARY_CLOUD_NAME'),
-                'api_key'    => env('CLOUDINARY_KEY'),
-                'api_secret' => env('CLOUDINARY_SECRET'),
-            ]
-        ]);
+       $cloudinary = new Cloudinary([
+    'cloud' => [
+        'cloud_name' => env('CLOUDINARY_CLOUD_NAME'),
+        'api_key'    => env('CLOUDINARY_API_KEY'),
+        'api_secret' => env('CLOUDINARY_API_SECRET'),
+    ]
+]);
         
         $result = $cloudinary->uploadApi()->upload(
             $request->file('image')->getRealPath()
@@ -119,12 +119,12 @@ class ProductController extends Controller
 if ($request->hasFile('image')) {
     try {
         $cloudinary = new Cloudinary([
-            'cloud' => [
-                'cloud_name' => env('CLOUDINARY_CLOUD_NAME'),
-                'api_key'    => env('CLOUDINARY_KEY'),
-                'api_secret' => env('CLOUDINARY_SECRET'),
-            ]
-        ]);
+    'cloud' => [
+        'cloud_name' => env('CLOUDINARY_CLOUD_NAME'),
+        'api_key'    => env('CLOUDINARY_API_KEY'),
+        'api_secret' => env('CLOUDINARY_API_SECRET'),
+    ]
+]);
         
         $result = $cloudinary->uploadApi()->upload(
             $request->file('image')->getRealPath()
