@@ -2,7 +2,7 @@
 @section('title', 'Brand  B2B Marketplace')
 
 @push('styles')
-<link rel="stylesheet" href="{{ secure_secure_asset('css/home.css') }}" />
+<link rel="stylesheet" href="{{ secure_asset('css/home.css') }}" />
 @endpush
 
 @section('content')
@@ -289,6 +289,6 @@
 @endsection
 
 @push('scripts')
-<script src="{{ secure_secure_asset('js/home.js') }}"></script>
+<script src="{{ secure_asset('js/home.js') }}"></script>
 
 @endpush
