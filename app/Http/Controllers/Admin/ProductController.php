@@ -8,6 +8,7 @@ use App\Models\Product;
 use App\Models\Category;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Storage;
+use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 
 class ProductController extends Controller
 {
@@ -28,8 +29,12 @@ class ProductController extends Controller
     $imagePath = null;
 
    if ($request->hasFile('image')) {
-    $uploadedFile = cloudinary()->upload($request->file('image')->getRealPath());
-    $imagePath = $uploadedFile->getSecurePath();
+    try {
+        $uploadedFile = cloudinary()->upload($request->file('image')->getRealPath());
+        $imagePath = $uploadedFile->getSecurePath();
+    } catch (\Exception $e) {
+        return response()->json(['message' => $e->getMessage()], 500);
+    }
 }
 
     $product = Product::create([
@@ -101,10 +106,13 @@ class ProductController extends Controller
             'is_deal'        => $request->is_deal ? 1 : 0,
 'discount_price' => $request->discount_price ? $request->discount_price : null,            
         ];
-
-      if ($request->hasFile('image')) {
-    $uploadedFile = cloudinary()->upload($request->file('image')->getRealPath());
-    $data['image'] = $uploadedFile->getSecurePath();
+if ($request->hasFile('image')) {
+    try {
+        $uploadedFile = cloudinary()->upload($request->file('image')->getRealPath());
+        $data['image'] = $uploadedFile->getSecurePath();
+    } catch (\Exception $e) {
+        return response()->json(['message' => $e->getMessage()], 500);
+    }
 }
 
         $product->update($data);
