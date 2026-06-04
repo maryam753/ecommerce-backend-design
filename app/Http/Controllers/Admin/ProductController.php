@@ -27,9 +27,10 @@ class ProductController extends Controller
 
     $imagePath = null;
 
-    if ($request->hasFile('image')) {
-        $imagePath = $request->file('image')->store('products', 'public');
-    }
+   if ($request->hasFile('image')) {
+    $uploadedFile = cloudinary()->upload($request->file('image')->getRealPath());
+    $imagePath = $uploadedFile->getSecurePath();
+}
 
     $product = Product::create([
         'name'           => $request->name,
@@ -101,12 +102,10 @@ class ProductController extends Controller
 'discount_price' => $request->discount_price ? $request->discount_price : null,            
         ];
 
-        if ($request->hasFile('image')) {
-            if ($product->image) {
-                Storage::disk('public')->delete($product->image);
-            }
-            $data['image'] = $request->file('image')->store('products', 'public');
-        }
+      if ($request->hasFile('image')) {
+    $uploadedFile = cloudinary()->upload($request->file('image')->getRealPath());
+    $data['image'] = $uploadedFile->getSecurePath();
+}
 
         $product->update($data);
         $product->load('category');
