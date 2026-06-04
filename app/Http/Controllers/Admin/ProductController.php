@@ -8,7 +8,7 @@ use App\Models\Product;
 use App\Models\Category;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Storage;
-use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
+use Cloudinary\Cloudinary;
 
 class ProductController extends Controller
 {
@@ -28,10 +28,20 @@ class ProductController extends Controller
 
     $imagePath = null;
 
-   if ($request->hasFile('image')) {
+  if ($request->hasFile('image')) {
     try {
-        $uploadedFile = cloudinary()->upload($request->file('image')->getRealPath());
-        $imagePath = $uploadedFile->getSecurePath();
+        $cloudinary = new Cloudinary([
+            'cloud' => [
+                'cloud_name' => env('CLOUDINARY_CLOUD_NAME'),
+                'api_key'    => env('CLOUDINARY_KEY'),
+                'api_secret' => env('CLOUDINARY_SECRET'),
+            ]
+        ]);
+        
+        $result = $cloudinary->uploadApi()->upload(
+            $request->file('image')->getRealPath()
+        );
+        $imagePath = $result['secure_url'];
     } catch (\Exception $e) {
         return response()->json(['message' => $e->getMessage()], 500);
     }
@@ -108,8 +118,18 @@ class ProductController extends Controller
         ];
 if ($request->hasFile('image')) {
     try {
-        $uploadedFile = cloudinary()->upload($request->file('image')->getRealPath());
-        $data['image'] = $uploadedFile->getSecurePath();
+        $cloudinary = new Cloudinary([
+            'cloud' => [
+                'cloud_name' => env('CLOUDINARY_CLOUD_NAME'),
+                'api_key'    => env('CLOUDINARY_KEY'),
+                'api_secret' => env('CLOUDINARY_SECRET'),
+            ]
+        ]);
+        
+        $result = $cloudinary->uploadApi()->upload(
+            $request->file('image')->getRealPath()
+        );
+        $data['image'] = $result['secure_url'];
     } catch (\Exception $e) {
         return response()->json(['message' => $e->getMessage()], 500);
     }
