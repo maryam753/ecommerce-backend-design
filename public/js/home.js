@@ -105,8 +105,8 @@ document.addEventListener('DOMContentLoaded', function () {
                     html += `
                         <div class="category-product-card">
                             <a href="/product-detail/${product.id}">
-                                <img src="/storage/${product.image}"
-                                     onerror="this.src='https://via.placeholder.com/150'">
+                               <img src="${product.image && product.image.startsWith('http') ? product.image : '/storage/' + product.image}"
+     onerror="this.src='https://via.placeholder.com/150'">
 
                                 <h4>${product.name}</h4>
                                 <p>Rs. ${product.price}</p>

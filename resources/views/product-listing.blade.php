@@ -138,7 +138,7 @@
         </button>
 
         <div class="card-image">
-            <img src="{{ secure_asset('storage/'.$product->image) }}" alt="{{ $product->name }}">
+<img src="{{ productImage($product->image) }}" alt="{{ $product->name }}">
         </div>
 
         <div class="card-body">
@@ -173,8 +173,9 @@
     <div class="product-card list-card">
 
         <div class="card-image">
-            <img src="{{ secure_asset('storage/'.$product->image) }}" alt="{{ $product->name }}">
-        </div>
+<img src="{{ productImage($product->image) }}" alt="{{ $product->name }}">  
+      </div>
+
 
         <div class="card-body">
 

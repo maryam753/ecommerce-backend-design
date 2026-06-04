@@ -17,8 +17,8 @@
             @forelse($cartItems as $item)
             <div class="cart-item">
                 <div class="item-img">
-                    <img src="{{ secure_asset('storage/' . $item->product->image) }}"
-                         alt="{{ $item->product->name }}">
+                   <img src="{{ productImage($item->product->image) }}"
+     alt="{{ $item->product->name }}">
                 </div>
 
                 <div class="item-info">

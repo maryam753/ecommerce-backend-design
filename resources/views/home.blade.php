@@ -122,7 +122,7 @@
      <a href="{{ route('product.detail', $product->id) }}" class="deal-card-link">
     <div class="deal-card">
   <div class="img-wrap">
-    <img src="{{ secure_asset('storage/' . $product->image) }}" alt="{{ $product->name }}">
+    <img src="{{ productImage($product->image) }}" alt="{{ $product->name }}">
   </div>
   <div class="name">{{ $product->name }}</div>
 
@@ -164,8 +164,8 @@
    <a href="{{ route('product.detail', $p->id) }}">
     <div class="cat-product">
             <div class="img-wrap">
-        <img src="{{ secure_asset('storage/' . $p->image) }}" alt="{{ $p->name }}"
-             onerror="this.src='https://via.placeholder.com/60x50/F0F4FF/2563EB?text=🏠'" />
+        <img src="{{ productImage($p->image) }}" alt="{{ $p->name }}"
+     onerror="this.src='https://via.placeholder.com/60x50/F0F4FF/2563EB?text=🏠'" />
       </div>
       <div class="name">{{ $p->name }}</div>
       <div class="price">PKR {{ number_format($p->price, 2) }}</div>
@@ -190,8 +190,8 @@
 <a href="{{ route('product.detail', $p->id) }}">
     <div class="cat-product">
             <div class="img-wrap">
-        <img src="{{ secure_asset('storage/' . $p->image) }}" alt="{{ $p->name }}"
-             onerror="this.src='https://via.placeholder.com/60x50/F0F9FF/0284C7?text=📱'" />
+<img src="{{ productImage($p->image) }}" alt="{{ $p->name }}"
+     onerror="this.src='https://via.placeholder.com/60x50/F0F9FF/0284C7?text=📱'" />
       </div>
       <div class="name">{{ $p->name }}</div>
       <div class="price">PKR {{ number_format($p->price, 2) }}</div>
@@ -211,8 +211,8 @@
        style="text-decoration:none;color:inherit;">
         <div class="item-card">
             <div class="img-wrap">
-                <img src="{{ secure_asset('storage/' . $product->image) }}"
-                     alt="{{ $product->name }}">
+            <img src="{{ productImage($product->image) }}"
+     alt="{{ $product->name }}">
             </div>
             @if($product->discount_price > 0)
                 <div class="price">

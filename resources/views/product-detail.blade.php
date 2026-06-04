@@ -14,8 +14,7 @@
 
         <div class="gallery">
             <div class="gallery-main">
-                <img src="{{ secure_asset('storage/' . $product->image) }}" alt="{{ $product->name }}" id="mainImgEl">
-            </div>
+<img src="{{ productImage($product->image) }}" alt="{{ $product->name }}" id="mainImgEl">            </div>
 
             @if($product->images && $product->images->count())
             <div class="gallery-thumbs">
@@ -232,8 +231,7 @@
             @foreach($youMayLike as $item)
             <a href="{{ route('product.detail', $item->id) }}" class="side-product">
                 <div class="side-img">
-                    <img src="{{ secure_asset('storage/' . $item->image) }}" alt="{{ $item->name }}">
-                </div>
+<img src="{{ productImage($item->image) }}" alt="{{ $item->name }}">                </div>
                 <div class="side-info">
                     <div class="side-name">{{ $item->name }}</div>
                     <div class="side-price">${{ number_format($item->price, 2) }}</div>
@@ -253,8 +251,7 @@
             @foreach($relatedProducts as $rp)
             <a href="{{ route('product.detail', $rp->id) }}" class="product-thumb-card">
                 <div class="product-thumb-img">
-                    <img src="{{ secure_asset('storage/' . $rp->image) }}" alt="{{ $rp->name }}">
-                </div>
+<img src="{{ productImage($rp->image) }}" alt="{{ $rp->name }}">                </div>
                 <div class="product-thumb-info">
                     <div class="product-thumb-name">{{ $rp->name }}</div>
                     <div class="product-thumb-price">${{ number_format($rp->price, 2) }}</div>

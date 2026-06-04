@@ -583,7 +583,7 @@ function viewProduct(id) {
   if (!p) return;
  
   const imgHtml = p.image
-    ? `<img src="/storage/${p.image}" alt="${p.name}">`
+   ? `<img src="${p.image && p.image.startsWith('http') ? p.image : '/storage/' + p.image}" alt="${p.name}">`
     : `<span style="font-size:2rem;">📦</span>`;
  
   get('viewModalBody').innerHTML = `
@@ -644,7 +644,7 @@ function editProduct(id) {
  
   if (p.image) {
     const img = get('imgPreview');
-    img.src = `/storage/${p.image}`;
+img.src = p.image && p.image.startsWith('http') ? p.image : `/storage/${p.image}`;
     img.style.display = 'block';
   }
  
@@ -870,7 +870,7 @@ function renderTable(data) {
 
   tbody.innerHTML = paginatedData.map((p, i) => {
     const imgContent = p.image
-      ? `<img src="/storage/${p.image}" style="width:100%;height:100%;object-fit:cover;border-radius:8px;">`
+      ? `<img src="${p.image && p.image.startsWith('http') ? p.image : '/storage/' + p.image}" style="width:100%;height:100%;object-fit:cover;border-radius:8px;">`
       : `<span style="font-size:1.3rem;">📦</span>`;
 
     return `
