@@ -230,15 +230,23 @@ function submitLogin() {
         },
         body: formData
     })
-    .then(res => res.json())
+    .then(res => {
+        if (res.ok || res.status === 422) return res.json();
+        // Non-JSON redirect means login succeeded
+        window.location.href = '/';
+        return null;
+    })
     .then(data => {
+        if (!data) return;
         if (data.errors) {
-            showToast(Object.values(data.errors).flat().join(', '), 'error');
+            alert(Object.values(data.errors).flat().join('\n'));
         } else {
-            window.location.reload();
+            window.location.href = '/';
         }
     })
-    .catch(() => window.location.reload());
+    .catch(() => {
+        window.location.href = '/';
+    });
 }
 
 function submitRegister() {
@@ -253,13 +261,20 @@ function submitRegister() {
         },
         body: formData
     })
-    .then(res => res.json())
+    .then(res => {
+        if (res.ok || res.status === 422) return res.json();
+        window.location.href = '/';
+        return null;
+    })
     .then(data => {
+        if (!data) return;
         if (data.errors) {
-            showToast(Object.values(data.errors).flat().join(', '), 'error');
+            alert(Object.values(data.errors).flat().join('\n'));
         } else {
-            window.location.reload();
+            window.location.href = '/';
         }
     })
-    .catch(() => window.location.reload());
+    .catch(() => {
+        window.location.href = '/';
+    });
 }

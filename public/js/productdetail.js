@@ -20,12 +20,13 @@
             this.classList.add('active');
         });
     });
-function addToCart(productId) {
-
+window.addToCart = function(productId) {
     if (!window.isLoggedIn) {
         document.getElementById('loginModal').style.display = 'flex';
+        document.body.style.overflow = 'hidden';
         return;
     }
+
 
     fetch('/cart/add', {
         method: 'POST',
