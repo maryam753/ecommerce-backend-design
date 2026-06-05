@@ -246,21 +246,7 @@ body {
     gap: 12px;
     margin-top: 4px;
 }
-.modal {
-    display: none !important;
-}
-.modal {
-    display: none !important;
-    position: fixed !important;
-    top: 0 !important;
-    left: 0 !important;
-    width: 100% !important;
-    height: 100% !important;
-    background: rgba(0,0,0,0.5) !important;
-    z-index: 99999 !important;
-    justify-content: center !important;
-    align-items: center !important;
-}
+
 
 .btn-cart,
 .btn-buy {
