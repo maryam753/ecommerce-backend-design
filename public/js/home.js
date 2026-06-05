@@ -230,25 +230,18 @@ function submitLogin() {
         },
         body: formData
     })
-    .then(res => {
-        if (res.ok || res.status === 422) return res.json();
-        // Non-JSON redirect means login succeeded
-window.location.replace('/');
-        return null;
-    })
+    .then(res => res.json())
     .then(data => {
-        if (!data) return;
         if (data.errors) {
             alert(Object.values(data.errors).flat().join('\n'));
         } else {
-window.location.replace('/');
+            window.location.replace(data.redirect || '/');
         }
     })
     .catch(() => {
-window.location.replace('/'); 
-   });
+        window.location.replace('/');
+    });
 }
-
 function submitRegister() {
     const form = document.getElementById('registerForm');
     const formData = new FormData(form);
