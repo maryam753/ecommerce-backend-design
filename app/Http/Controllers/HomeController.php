@@ -12,9 +12,7 @@ class HomeController extends Controller
     $categories = Category::all();
      $products = Product::all(); 
      $deals = Product::where('is_deal', 1)->get();
-$homeDecor = Product::whereHas('category', function ($q) {
-    $q->whereRaw('LOWER(name) LIKE ?', ['%home%decor%']);
-})->get();
+$homeDecor = Product::where('category_id', 3)->get();
 $computer = Product::where('category_id',
     Category::where('name', 'like', '%computer%')->value('id')
 )->get();
