@@ -218,3 +218,48 @@ function showToast(msg, type = 'success') {
     };
 
 });
+function submitLogin() {
+    const form = document.getElementById('loginForm');
+    const formData = new FormData(form);
+
+    fetch('{{ route("login") }}', {
+        method: 'POST',
+        headers: {
+            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
+            'Accept': 'application/json',
+        },
+        body: formData
+    })
+    .then(res => res.json())
+    .then(data => {
+        if (data.errors) {
+            showToast(Object.values(data.errors).flat().join(', '), 'error');
+        } else {
+            window.location.reload();
+        }
+    })
+    .catch(() => window.location.reload());
+}
+
+function submitRegister() {
+    const form = document.getElementById('registerForm');
+    const formData = new FormData(form);
+
+    fetch('{{ route("register") }}', {
+        method: 'POST',
+        headers: {
+            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
+            'Accept': 'application/json',
+        },
+        body: formData
+    })
+    .then(res => res.json())
+    .then(data => {
+        if (data.errors) {
+            showToast(Object.values(data.errors).flat().join(', '), 'error');
+        } else {
+            window.location.reload();
+        }
+    })
+    .catch(() => window.location.reload());
+}

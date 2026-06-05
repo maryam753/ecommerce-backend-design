@@ -108,7 +108,7 @@
             Register to continue shopping with us.
         </p>
 
-        <form method="POST" action="{{ route('register') }}">
+        <form method="POST" id="registerForm">
             @csrf
 
             <!-- Name -->
@@ -190,7 +190,7 @@
             </div>
 
             <!-- Button -->
-            <button type="submit" class="register-btn">
+            <button type="submit"  onclick="submitRegister()" class="register-btn">
                 Create Account
             </button>
 

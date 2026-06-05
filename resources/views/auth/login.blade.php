@@ -143,7 +143,7 @@
             </div>
         @endif
 
-        <form method="POST" action="{{ route('login') }}">
+        <form method="POST" id="loginForm">
             @csrf
 
             <div class="input-group">
@@ -185,7 +185,7 @@
                 <span>Remember Me</span>
             </div>
 
-            <button type="submit" class="login-btn">
+            <button type="submit" onclick="submitLogin()" class="login-btn">
                 Login
             </button>
             <div style="text-align:center; margin:20px 0; color:#9ca3af;">
