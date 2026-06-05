@@ -233,7 +233,7 @@ function submitLogin() {
     .then(res => {
         if (res.ok || res.status === 422) return res.json();
         // Non-JSON redirect means login succeeded
-        window.location.href = '/';
+window.location.replace('/');
         return null;
     })
     .then(data => {
@@ -241,12 +241,12 @@ function submitLogin() {
         if (data.errors) {
             alert(Object.values(data.errors).flat().join('\n'));
         } else {
-            window.location.href = '/';
+window.location.replace('/');
         }
     })
     .catch(() => {
-        window.location.href = '/';
-    });
+window.location.replace('/'); 
+   });
 }
 
 function submitRegister() {
@@ -263,7 +263,7 @@ function submitRegister() {
     })
     .then(res => {
         if (res.ok || res.status === 422) return res.json();
-        window.location.href = '/';
+    window.location.replace('/');
         return null;
     })
     .then(data => {
@@ -271,10 +271,10 @@ function submitRegister() {
         if (data.errors) {
             alert(Object.values(data.errors).flat().join('\n'));
         } else {
-            window.location.href = '/';
+            window.location.replace('/');;
         }
     })
     .catch(() => {
-        window.location.href = '/';
+      window.location.replace('/');;
     });
 }
