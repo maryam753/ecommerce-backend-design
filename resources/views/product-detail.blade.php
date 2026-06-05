@@ -133,8 +133,8 @@
             </div>
 
             <div class="product-buttons">
-<button class="btn-cart" onclick="addToCart({{ $product->id }})">
-    Add to Cart
+<button class="btn-cart" onclick="window.addToCart({{ $product->id }})">
+        Add to Cart
 </button>
 <form action="{{ route('buy.now') }}" method="POST">
     @csrf
