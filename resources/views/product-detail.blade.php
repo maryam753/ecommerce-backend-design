@@ -4,6 +4,8 @@
 
 @push('styles')
 <link rel="stylesheet" href="{{ secure_asset('css/productdetail.css') }}">
+<link rel="stylesheet" href="{{ secure_asset('css/home.css') }}">
+
 @endpush
 
 @section('content')
