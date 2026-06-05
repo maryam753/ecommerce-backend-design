@@ -27,7 +27,6 @@ window.addToCart = function(productId) {
         return;
     }
 
-
     fetch('/cart/add', {
         method: 'POST',
         headers: {
@@ -48,7 +47,7 @@ window.addToCart = function(productId) {
         const cartCount = document.getElementById('cartCount');
 
         if (cartCount) {
-            cartCount.textContent = data.count; // 🔥 LIVE UPDATE
+            cartCount.textContent = data.count; 
         }
 
         showToast('Added to cart', 'success');
@@ -84,12 +83,14 @@ document.addEventListener('DOMContentLoaded', function () {
     const loginModal = document.getElementById('loginModal');
 
     document.getElementById('closeLogin')?.addEventListener('click', () => {
-        loginModal.style.setProperty('display', 'none', 'important');
+        loginModal.style.display = 'none';
+        document.body.style.overflow = 'auto';
     });
 
     window.addEventListener('click', (e) => {
         if (e.target === loginModal) {
-            loginModal.style.setProperty('display', 'none', 'important');
+            loginModal.style.display = 'none';
+            document.body.style.overflow = 'auto';
         }
     });
 });
