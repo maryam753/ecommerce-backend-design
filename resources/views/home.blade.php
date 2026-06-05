@@ -285,7 +285,11 @@
   
 @include('profile.partials.login-modal')
 @include('profile.partials.register-modal')
-
+<script>
+    window.isLoggedIn = {{ auth()->check() ? 'true' : 'false' }};
+    window.loginRoute = "{{ route('login') }}";
+    window.registerRoute = "{{ route('register') }}";
+</script>
 @endsection
 
 @push('scripts')

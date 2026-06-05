@@ -222,7 +222,7 @@ function submitLogin() {
     const form = document.getElementById('loginForm');
     const formData = new FormData(form);
 
-    fetch('{{ route("login") }}', {
+    fetch(window.loginRoute, {
         method: 'POST',
         headers: {
             'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
@@ -245,7 +245,7 @@ function submitRegister() {
     const form = document.getElementById('registerForm');
     const formData = new FormData(form);
 
-    fetch('{{ route("register") }}', {
+    fetch(window.registerRoute, {
         method: 'POST',
         headers: {
             'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,

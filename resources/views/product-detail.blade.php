@@ -273,11 +273,11 @@
 
 @include('profile.partials.login-modal')
 @include('profile.partials.register-modal')
-
-@endsection
 <script>
     window.isLoggedIn = {{ auth()->check() ? 'true' : 'false' }};
 </script>
+@endsection
+
 
 @push('scripts')
 <script src="{{ secure_asset('js/productdetail.js') }}"></script>
