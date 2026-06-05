@@ -12,8 +12,12 @@ class HomeController extends Controller
     $categories = Category::all();
      $products = Product::all(); 
      $deals = Product::where('is_deal', 1)->get();
-$homeDecor = Product::whereHas('category', function ($q) { $q->where('name', 'Home and Decor'); })->get();
-      $computer = Product::whereHas('category', function ($q) { $q->where('name', 'computer and tech'); })->get();
+$homeDecor = Product::whereHas('category', function ($q) {
+    $q->whereRaw('LOWER(name) LIKE ?', ['%home%decor%']);
+})->get();
+$computer = Product::where('category_id',
+    Category::where('name', 'like', '%computer%')->value('id')
+)->get();
     $recommended = Product::latest()->take(10)->get();
 
     return view('home', compact(
